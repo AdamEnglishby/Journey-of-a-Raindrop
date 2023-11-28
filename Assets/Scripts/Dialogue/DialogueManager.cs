@@ -31,12 +31,13 @@ public class DialogueManager : MonoBehaviour, InputActions.IDialogueActions
 
     public static async Task DoTextBox(TextBox box)
     {
+        _instance.bodyText.gameObject.SetActive(true);
+        _instance.speakerText.gameObject.SetActive(true);
+        
         _instance.bodyText.text = box.text;
         _instance.speakerText.text = box.speakerName;
 
         _instance._active = true;
-        _instance.bodyText.gameObject.SetActive(true);
-        _instance.speakerText.gameObject.SetActive(true);
 
         _instance.bodyText.GetComponent<TypewriterByCharacter>().onTextShowed.AddListener(() =>
         {
