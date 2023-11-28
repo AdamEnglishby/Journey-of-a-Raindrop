@@ -1367,6 +1367,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &57147346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48200a803e9c48688b95c6bef722aea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: I have to get back! I fell too early!
+  speakerName: You
+  waitUntilComplete: 1
 --- !u!1 &80769010
 GameObject:
   m_ObjectHideFlags: 0
@@ -5227,55 +5242,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &248941174
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 248941176}
-  - component: {fileID: 248941177}
-  m_Layer: 0
-  m_Name: Dialogue Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &248941176
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 248941174}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.078526, y: -0.27057934, z: -17.138002}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &248941177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 248941174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0224c550667c49f889c64cf66544af30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speakerText: {fileID: 1332738573}
-  bodyText: {fileID: 281767868}
-  speakerPanel: {fileID: 1223167683}
-  bodyPanel: {fileID: 1091083895}
-  receivedButton: 0
 --- !u!1 &253335459
 GameObject:
   m_ObjectHideFlags: 0
@@ -6004,17 +5970,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &281767868 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8144174085318944424, guid: a0ba87c1d8f51de4a9669735296c0f67, type: 3}
-  m_PrefabInstance: {fileID: 5412976650817797052}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &289299603
 GameObject:
   m_ObjectHideFlags: 0
@@ -21712,11 +21667,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!224 &1091083895 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1549783812474105788, guid: a0ba87c1d8f51de4a9669735296c0f67, type: 3}
-  m_PrefabInstance: {fileID: 5412976650817797052}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1094447374
 GameObject:
   m_ObjectHideFlags: 0
@@ -23881,11 +23831,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &1223167683 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5433321544587892838, guid: a0ba87c1d8f51de4a9669735296c0f67, type: 3}
-  m_PrefabInstance: {fileID: 5412976650817797052}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1234932437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25358,17 +25303,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1332738573 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4168353372067544454, guid: a0ba87c1d8f51de4a9669735296c0f67, type: 3}
-  m_PrefabInstance: {fileID: 5412976650817797052}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1335752456
 GameObject:
   m_ObjectHideFlags: 0
@@ -52006,8 +51940,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6490609341310563119, guid: a0ba87c1d8f51de4a9669735296c0f67, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5412976650817797054}
   m_SourcePrefab: {fileID: 100100000, guid: a0ba87c1d8f51de4a9669735296c0f67, type: 3}
+--- !u!1 &5412976650817797053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6490609341310563119, guid: a0ba87c1d8f51de4a9669735296c0f67, type: 3}
+  m_PrefabInstance: {fileID: 5412976650817797052}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5412976650817797054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5412976650817797053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c45b2145dc3f4d7f912bbc08c3f9d4c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runOnStart: 1
+  actions:
+  - {fileID: 57147346}
 --- !u!4 &5414354733414592309
 Transform:
   m_ObjectHideFlags: 0
@@ -61135,7 +61092,6 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 536198978}
   - {fileID: 1966676789}
-  - {fileID: 248941176}
   - {fileID: 663713669}
   - {fileID: 1387813640}
   - {fileID: 1895254744}
