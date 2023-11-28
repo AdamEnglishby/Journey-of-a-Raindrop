@@ -2,18 +2,14 @@
 using UnityEngine;
 using Random = System.Random;
 
-namespace DefaultNamespace
+[RequireComponent(typeof(SpriteRenderer))]
+public class GrassRandomiser : MonoBehaviour
 {
-    [RequireComponent(typeof(SpriteRenderer))]
-    public class GrassRandomiser : MonoBehaviour
-    {
+    [SerializeField] private Sprite[] randomTiles;
 
-        [SerializeField] private Sprite[] randomTiles;
-        
-        private void Start()
-        {
-            var rnd = new Random();
-            GetComponent<SpriteRenderer>().sprite = randomTiles[rnd.Next(randomTiles.Length)];
-        }
+    private void Start()
+    {
+        var rnd = new Random();
+        GetComponent<SpriteRenderer>().sprite = randomTiles[rnd.Next(randomTiles.Length)];
     }
 }

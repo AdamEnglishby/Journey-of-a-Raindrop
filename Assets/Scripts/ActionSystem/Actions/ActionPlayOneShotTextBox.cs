@@ -1,9 +1,5 @@
 ﻿using System.Threading.Tasks;
-using _Morrigan.Scripts.Dialogue;
-using UnityEngine;
 
-namespace _Morrigan.Scripts.ActionSystem
-{
     public class ActionPlayOneShotTextBox : Action
     {
         public string text;
@@ -15,7 +11,7 @@ namespace _Morrigan.Scripts.ActionSystem
             return "Play Text Box (One Shot)";
         }
 
-        public override ActionCategory Category()
+        public override Action.ActionCategory Category()
         {
             return ActionCategory.Dialogue;
         }
@@ -50,4 +46,3 @@ namespace _Morrigan.Scripts.ActionSystem
 #endif
         
     }
-}
