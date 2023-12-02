@@ -31,18 +31,18 @@ public class PlayerMovement : MonoBehaviour, InputActions.IMovementActions
         _transform.localScale = new Vector3(left ? -1 : 1, 1, 1);
 
         var forwards = difference.y >= 0;
-        forwardDirection.gameObject.SetActive(forwards);
-        backwardDirection.gameObject.SetActive(!forwards);
+        forwardDirection.enabled = forwards;
+        backwardDirection.enabled = !forwards;
 
         if (difference.magnitude == 0)
         {
-            forwardDirection.gameObject.SetActive(false);
-            backwardDirection.gameObject.SetActive(false);
-            idle.gameObject.SetActive(true);
+            forwardDirection.enabled = false;
+            backwardDirection.enabled = false;
+            idle.enabled = true;
         }
         else
         {
-            idle.gameObject.SetActive(false);
+            idle.enabled = false;
         }
     }
 
