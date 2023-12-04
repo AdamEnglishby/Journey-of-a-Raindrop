@@ -558,6 +558,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &516770621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d077904a144a06bc82c7beb9717325, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  message: SampleScene
 --- !u!1 &522121770
 GameObject:
   m_ObjectHideFlags: 0
@@ -2253,7 +2266,7 @@ Camera:
   far clip plane: 1000
   field of view: 60.000004
   orthographic: 1
-  orthographic size: 6.375
+  orthographic size: 4.78125
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2298,8 +2311,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runOnStart: 1
   actions:
-  - {fileID: 1747618495}
-  - {fileID: 1306892076}
+  - {fileID: 1503344140}
+  - {fileID: 516770621}
 --- !u!114 &961739755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3661,19 +3674,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1306892076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5d077904a144a06bc82c7beb9717325, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: SampleScene
 --- !u!1 &1318250190
 GameObject:
   m_ObjectHideFlags: 0
@@ -3928,6 +3928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1455914828}
   - component: {fileID: 1455914827}
+  - component: {fileID: 1455914829}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -3990,6 +3991,31 @@ Transform:
   - {fileID: 2117062032}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1455914829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455914826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1503344140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175ebfc6924747a68710da15854b7bd9, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  waitTimeSeconds: 5
 --- !u!1 &1510046288
 GameObject:
   m_ObjectHideFlags: 0
@@ -4220,19 +4246,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1747618495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 175ebfc6924747a68710da15854b7bd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waitTimeSeconds: 5
 --- !u!1 &1749735833
 GameObject:
   m_ObjectHideFlags: 0
