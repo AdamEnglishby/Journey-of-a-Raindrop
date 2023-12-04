@@ -12,6 +12,6 @@ public class LayerSorting : MonoBehaviour
 
     private void Update()
     {
-        _renderer.sortingOrder = (int) -transform.position.y;
+        _renderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100f);
     }
 }
