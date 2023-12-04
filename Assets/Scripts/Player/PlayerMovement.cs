@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour, InputActions.IMovementActions
 {
     [SerializeField] private float speedMultiplier = 7.5f;
+    [SerializeField] private AnimationCurve animationSpeedPerMovementSpeed;
 
     public InputActions Input;
     
@@ -14,11 +15,11 @@ public class PlayerMovement : MonoBehaviour, InputActions.IMovementActions
     private Vector3 _velocity;
     
     public PlayerState State;
-    
     private Vector3 _moveDirection;
     
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int Forwards = Animator.StringToHash("Forwards");
+    private static readonly int AnimationSpeed = Animator.StringToHash("Animation Speed");
 
     private void OnEnable()
     {
@@ -42,9 +43,11 @@ public class PlayerMovement : MonoBehaviour, InputActions.IMovementActions
         var targetVelocity = _moveDirection * speedMultiplier;
         _rigidbody.velocity = Vector3.SmoothDamp(_rigidbody.velocity, targetVelocity, ref _velocity, 0.01f);
 
-        _animator.SetFloat(Speed, _rigidbody.velocity.magnitude / speedMultiplier);
-
-        if (!(_moveDirection.magnitude > 0)) return;
+        var speed = _rigidbody.velocity.magnitude / speedMultiplier;
+        _animator.SetFloat(Speed, speed);
+        _animator.SetFloat(AnimationSpeed, animationSpeedPerMovementSpeed.Evaluate(speed));
+        
+        if (_moveDirection.magnitude <= 0) return;
 
         switch (_moveDirection.y)
         {
