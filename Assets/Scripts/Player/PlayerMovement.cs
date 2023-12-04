@@ -1,18 +1,28 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class PlayerMovement : MonoBehaviour, InputActions.IMovementActions
 {
     [SerializeField] private float speedMultiplier = 7.5f;
-    [SerializeField] private SpriteRenderer forwardDirection, backwardDirection, idle;
 
     public InputActions Input;
-    private Vector3 _moveDirection;
-    private Transform _transform;
     
+    private Rigidbody2D _rigidbody;
+    private Animator _animator;
+    private Vector3 _velocity;
+    
+    private Vector3 _moveDirection;
+    
+    private static readonly int Speed = Animator.StringToHash("Speed");
+    private static readonly int Forwards = Animator.StringToHash("Forwards");
+
     private void OnEnable()
     {
-        _transform = transform;
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        
         if (Input == null)
         {
             Input = new InputActions();
@@ -23,26 +33,31 @@ public class PlayerMovement : MonoBehaviour, InputActions.IMovementActions
 
     private void Update()
     {
-        var firstPos = _transform.position;
-        _transform.position += _moveDirection * Time.deltaTime * speedMultiplier;
-        var difference = firstPos - _transform.position;
+        var targetVelocity = _moveDirection * speedMultiplier;
+        _rigidbody.velocity = Vector3.SmoothDamp(_rigidbody.velocity, targetVelocity, ref _velocity, 0.01f);
 
-        var left = difference.x > 0;
-        _transform.localScale = new Vector3(left ? -1 : 1, 1, 1);
+        _animator.SetFloat(Speed, _rigidbody.velocity.magnitude / speedMultiplier);
 
-        var forwards = difference.y >= 0;
-        forwardDirection.enabled = forwards;
-        backwardDirection.enabled = !forwards;
+        if (!(_moveDirection.magnitude > 0)) return;
 
-        if (difference.magnitude == 0)
+        switch (_moveDirection.y)
         {
-            forwardDirection.enabled = false;
-            backwardDirection.enabled = false;
-            idle.enabled = true;
+            case > 0: 
+                _animator.SetBool(Forwards, false);
+                break;
+            case < 0:
+                _animator.SetBool(Forwards, true);
+                break;
         }
-        else
+        
+        switch (_moveDirection.x)
         {
-            idle.enabled = false;
+            case > 0:
+                transform.DOScaleX(1, 0.25f);
+                break;
+            case < 0:
+                transform.DOScaleX(-1, 0.25f);
+                break;
         }
     }
 
