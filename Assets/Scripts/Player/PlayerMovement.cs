@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour, InputActions.IMovementActions
     private Animator _animator;
     private Vector3 _velocity;
     
+    public PlayerState State;
+    
     private Vector3 _moveDirection;
     
     private static readonly int Speed = Animator.StringToHash("Speed");
@@ -20,6 +22,8 @@ public class PlayerMovement : MonoBehaviour, InputActions.IMovementActions
 
     private void OnEnable()
     {
+        State = new PlayerState(PlayerState.State.FreeMovement);
+        
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         
@@ -33,6 +37,8 @@ public class PlayerMovement : MonoBehaviour, InputActions.IMovementActions
 
     private void Update()
     {
+        if (!State.CanMove()) return;
+        
         var targetVelocity = _moveDirection * speedMultiplier;
         _rigidbody.velocity = Vector3.SmoothDamp(_rigidbody.velocity, targetVelocity, ref _velocity, 0.01f);
 

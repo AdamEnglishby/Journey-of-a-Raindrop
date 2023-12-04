@@ -31,6 +31,7 @@ public class DialogueManager : MonoBehaviour, InputActions.IDialogueActions
 
     public static async Task DoTextBox(TextBox box)
     {
+        References.Player.State.SetState(PlayerState.State.Dialogue);
         _instance.bodyText.gameObject.SetActive(true);
         _instance.speakerText.gameObject.SetActive(true);
         
@@ -65,6 +66,7 @@ public class DialogueManager : MonoBehaviour, InputActions.IDialogueActions
         _instance.bodyText.gameObject.SetActive(false);
         _instance.speakerText.gameObject.SetActive(false);
         _instance._active = false;
+        References.Player.State.SetState(PlayerState.State.FreeMovement);
     }
 
     public async void OnContinue(InputAction.CallbackContext context)
