@@ -2,18 +2,18 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour, InputActions.IMovementActions
 {
     [SerializeField] private float speedMultiplier = 7.5f;
+    [SerializeField] private Animator animator;
     [SerializeField] private AnimationCurve animationSpeedPerMovementSpeed;
 
     public InputActions Input;
     
     private Rigidbody2D _rigidbody;
-    private Animator _animator;
-    private Vector3 _velocity;
-    
+    private Vector2 _velocity;
+
     public PlayerState State;
     private Vector3 _moveDirection;
     
@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour, InputActions.IMovementActions
         State = new PlayerState(PlayerState.State.FreeMovement);
         
         _rigidbody = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
         
         if (Input == null)
         {
@@ -38,24 +37,28 @@ public class PlayerMovement : MonoBehaviour, InputActions.IMovementActions
 
     private void Update()
     {
-        if (!State.CanMove()) return;
+        if (!State.CanMove())
+        {
+            _moveDirection = Vector3.zero;
+        }
         
         var targetVelocity = _moveDirection * speedMultiplier;
-        _rigidbody.velocity = Vector3.SmoothDamp(_rigidbody.velocity, targetVelocity, ref _velocity, 0.01f);
+        _rigidbody.velocity = Vector2.SmoothDamp(_rigidbody.velocity, targetVelocity, ref _velocity, Time.deltaTime);
+        
 
         var speed = _rigidbody.velocity.magnitude / speedMultiplier;
-        _animator.SetFloat(Speed, speed);
-        _animator.SetFloat(AnimationSpeed, animationSpeedPerMovementSpeed.Evaluate(speed));
+        animator.SetFloat(Speed, speed);
+        animator.SetFloat(AnimationSpeed, animationSpeedPerMovementSpeed.Evaluate(speed));
         
         if (_moveDirection.magnitude <= 0) return;
 
         switch (_moveDirection.y)
         {
             case > 0: 
-                _animator.SetBool(Forwards, false);
+                animator.SetBool(Forwards, false);
                 break;
             case < 0:
-                _animator.SetBool(Forwards, true);
+                animator.SetBool(Forwards, true);
                 break;
         }
         
