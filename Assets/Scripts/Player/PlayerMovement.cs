@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour, InputActions.IMovementActions
 {
     [SerializeField] private float speedMultiplier = 7.5f;
-    [SerializeField] private Animator animator;
+    [SerializeField] private Animator[] animators;
     [SerializeField] private AnimationCurve animationSpeedPerMovementSpeed;
 
     public InputActions Input;
@@ -47,18 +47,27 @@ public class PlayerMovement : MonoBehaviour, InputActions.IMovementActions
         
 
         var speed = _rigidbody.velocity.magnitude / speedMultiplier;
-        animator.SetFloat(Speed, speed);
-        animator.SetFloat(AnimationSpeed, animationSpeedPerMovementSpeed.Evaluate(speed));
-        
+        foreach (var animator in animators)
+        {
+            animator.SetFloat(Speed, speed);
+            animator.SetFloat(AnimationSpeed, animationSpeedPerMovementSpeed.Evaluate(speed));
+        }
+
         if (_moveDirection.magnitude <= 0) return;
 
         switch (_moveDirection.y)
         {
             case > 0: 
-                animator.SetBool(Forwards, false);
+                foreach (var animator in animators)
+                {
+                    animator.SetBool(Forwards, false);
+                }
                 break;
             case < 0:
-                animator.SetBool(Forwards, true);
+                foreach (var animator in animators)
+                {
+                    animator.SetBool(Forwards, true);
+                }
                 break;
         }
         
