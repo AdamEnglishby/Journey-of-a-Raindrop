@@ -39,7 +39,7 @@ public class HotspotDetect : MonoBehaviour, InputActions.IInteractionActions
     {
         if (!context.action.WasPressedThisFrame()) return;
         
-        if (currentInteractable && !DialogueManager.Active)
+        if (currentInteractable && References.Player.State.CanMove())
         {
             Interact();
         }

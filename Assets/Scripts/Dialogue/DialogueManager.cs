@@ -10,14 +10,12 @@ public class DialogueManager : MonoBehaviour, InputActions.IDialogueActions
     [SerializeField] private TMP_Text speakerText, bodyText;
     [SerializeField] private RectTransform speakerPanel, bodyPanel;
 
-    private bool _active;
     private InputActions _input;
     private TextBox _currentTextBox, _nextTextBox;
     private bool _waitingForInput;
-    public bool receivedButton;
+    private bool _receivedButton;
 
     private static DialogueManager _instance;
-    public static bool Active => _instance._active;
 
     private void OnEnable()
     {
@@ -38,8 +36,6 @@ public class DialogueManager : MonoBehaviour, InputActions.IDialogueActions
         _instance.bodyText.text = box.text;
         _instance.speakerText.text = box.speakerName;
 
-        _instance._active = true;
-
         _instance.bodyText.GetComponent<TypewriterByCharacter>().onTextShowed.AddListener(() =>
         {
             _instance._waitingForInput = true;
@@ -49,12 +45,12 @@ public class DialogueManager : MonoBehaviour, InputActions.IDialogueActions
         _instance.speakerPanel.DOScale(Vector3.one, 0.1f);
         _instance.bodyPanel.DOScale(Vector3.one, 0.1f);
 
-        while (!_instance.receivedButton)
+        while (!_instance._receivedButton)
         {
             await Awaitable.NextFrameAsync();
         }
 
-        _instance.receivedButton = false;
+        _instance._receivedButton = false;
         _instance._waitingForInput = false;
 
         _instance.speakerPanel.DOScale(Vector3.zero, 0.1f);
@@ -65,16 +61,21 @@ public class DialogueManager : MonoBehaviour, InputActions.IDialogueActions
 
         _instance.bodyText.gameObject.SetActive(false);
         _instance.speakerText.gameObject.SetActive(false);
-        _instance._active = false;
+        
         References.Player.State.SetState(PlayerState.State.FreeMovement);
     }
 
     public async void OnContinue(InputAction.CallbackContext context)
     {
         if (!context.action.WasPressedThisFrame()) return;
-        if (!_waitingForInput) return;
+        if (!_waitingForInput)
+        {
+            // TODO: skip text here
+            
+            return;
+        }
         await Awaitable.NextFrameAsync();
-        receivedButton = true;
+        _receivedButton = true;
         _waitingForInput = false;
     }
 }
