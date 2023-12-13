@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using DG.Tweening;
 using Febucci.UI;
 using TMPro;
@@ -42,8 +43,15 @@ public class DialogueManager : MonoBehaviour, InputActions.IDialogueActions
             _instance.bodyText.GetComponent<TypewriterByCharacter>().onTextShowed.RemoveAllListeners();
         });
 
-        _instance.speakerPanel.DOScale(Vector3.one, 0.1f);
-        _instance.bodyPanel.DOScale(Vector3.one, 0.1f);
+        if (!string.IsNullOrWhiteSpace(box.speakerName))
+        {
+            _instance.speakerPanel.DOScale(Vector3.one, 0.1f);
+        }
+
+        if (!string.IsNullOrWhiteSpace(box.text))
+        {
+            _instance.bodyPanel.DOScale(Vector3.one, 0.1f);
+        }
 
         while (!_instance._receivedButton)
         {
